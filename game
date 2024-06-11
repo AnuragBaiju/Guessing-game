@@ -1,0 +1,44 @@
+import random
+
+# Generate a random number between 1 and 100
+guessed_number = random.randint(1, 100)
+
+# Set up the lives for each difficulty level
+EASY_LIVES = 10
+HARD_LIVES = 5
+
+# Print welcome message and the randomly guessed number for debugging purposes
+print("Welcome to the guessing game! 🎲🎮")
+print("I thought of a number between 1-100 😏")
+print(f"Pssst, the answer is {guessed_number} 🤫")
+
+difficulty = input("Enter the difficulty you want to play\n"
+                   "Easy or Hard").lower()
+
+if difficulty =="easy":
+    lives = EASY_LIVES
+elif difficulty =="hard":
+    lives = HARD_LIVES
+else:
+    print("You've entered an invalid input, defaulting to Easy")
+    lives = EASY_LIVES
+
+while lives > 0:
+    print(f"you have {lives} left")
+    guess = int(input("Guess the number"))
+    if guess == guessed_number:
+        print(f"You got it !! The answer is {guessed_number}🥳🍾")
+        break
+    elif guess>guessed_number:
+        print("Too high📈")
+    elif guess < guessed_number:
+        print("Too low📉")
+
+    lives-=1
+
+if lives == 0:
+    print("Woopsies, You have no more lives left\n"
+          "You lose 😵")
+
+
+
